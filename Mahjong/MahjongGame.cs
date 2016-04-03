@@ -23,7 +23,18 @@ namespace Mahjong
 
         public Player DecideParent(int p)
         {
+            //サイ振り用ランダム
+            System.Random r = new System.Random();
+
+            //サイコロ2個の値を取得
+            var sai1 = r.Next(5) + 1;
+            var sai2 = r.Next(5) + 1;
+
+            //サイコロの値を足して,計算(途中
+            var saiValue = sai1 + sai2;
+            
             throw new NotImplementedException();
+
         }
     }
 }
