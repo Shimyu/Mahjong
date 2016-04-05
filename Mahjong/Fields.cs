@@ -9,8 +9,8 @@ namespace Mahjong
     public enum Fields
     {
         East,
-        North,
+        South,
         West,
-        South
+        North,
     }
 }

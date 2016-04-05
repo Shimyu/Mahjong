@@ -12,11 +12,11 @@ namespace MahjongTest
         [TestMethod]
         public void Test親を決める()
         {
-            var p1 = new Player("Aさん", Fields.East);
-            var p2 = new Player("Bさん", Fields.North);
-            var p3 = new Player("Cさん", Fields.West);
-            var p4 = new Player("Dさん", Fields.South);
-
+            var p1 = new Player("Aさん", Fields.East);    //東
+            var p2 = new Player("Bさん", Fields.South);   //南
+            var p3 = new Player("Cさん", Fields.West);    //西
+            var p4 = new Player("Dさん", Fields.North);   //北
+            
             var game = new MahjongGame(p1,p2,p3,p4);
             Player kariParent = game.DecideParent(6);
 
