@@ -21,7 +21,7 @@ namespace Mahjong
             this.p4 = p4;
         }
 
-        public Player DecideParent(int p)
+        public Player DecideParent()
         {
             //決定した親を格納.
             Player decideParent;
@@ -58,5 +58,45 @@ namespace Mahjong
             //未割当のローカル変数'decideParent'が使用されました？
             return decideParent;
         }
-    }
+
+        //途中！！！！
+        //仮親が決まっている場合
+        public Player DecideParent(Player p)
+        {
+            //決定した親を格納.
+            Player decideParent;
+
+            //サイ振り用ランダム.
+            System.Random r = new System.Random();
+
+            //サイコロ2個の値を取得.
+            var sai1 = r.Next(5) + 1;
+            var sai2 = r.Next(5) + 1;
+
+            //サイコロの値を足して,計算
+            var saiValue = sai1 + sai2;
+
+            while (saiValue < 5)
+            {
+                saiValue = saiValue - 4;
+            }
+            switch (saiValue)
+            {
+                case 1:
+                    decideParent = p1;
+                    break;
+                case 2:
+                    decideParent = p2;
+                    break;
+                case 3:
+                    decideParent = p3;
+                    break;
+                case 4:
+                    decideParent = p4;
+                    break;
+            }
+            //未割当のローカル変数'decideParent'が使用されました？
+            return decideParent;
+        }
+}
 }

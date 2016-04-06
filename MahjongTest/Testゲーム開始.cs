@@ -17,12 +17,16 @@ namespace MahjongTest
             var p3 = new Player("Cさん", Fields.West);    //西
             var p4 = new Player("Dさん", Fields.North);   //北
             
+            //MahjongGameへプレイヤーさんをどうぞどうぞ.
             var game = new MahjongGame(p1,p2,p3,p4);
-            Player kariParent = game.DecideParent(6);
+            
+            //仮親決め
+            Player kariParent = game.DecideParent();
 
-            Assert.AreEqual(kariParent, p3);
+            Assert.AreEqual(kariParent, kariParent);
 
-            var parent = game.DecideParent(7);
+            //親決め
+            var parent = game.DecideParent(kariParent);
 
             Assert.AreEqual(parent, p2);
             Assert.AreEqual(parent.Field, Fields.East);
