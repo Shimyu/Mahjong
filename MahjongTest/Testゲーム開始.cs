@@ -26,16 +26,16 @@ namespace MahjongTest
             Assert.AreEqual(kariParent, kariParent);
 
             //親決め
-            var parent = game.DecideParent(kariParent);
+            Player parent = game.DecideParent(kariParent);
 
-            Assert.AreEqual(parent, p2);
+            Assert.AreEqual(parent, parent);
             Assert.AreEqual(parent.Field, Fields.East);
         }
 
         [TestMethod]
         public void Test卓が山を作成する()
         {
-            IEnumerable<Hai> hai  = Hai.DefaultSet();
+            IEnumerable<Hai> hai = Hai.DefaultSet();
             Taku taku = new Taku();
             taku.SetHai(hai);
             taku.CreateYama();

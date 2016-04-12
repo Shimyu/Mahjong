@@ -20,11 +20,14 @@ namespace Mahjong
             this.p3 = p3;
             this.p4 = p4;
         }
-
+        /// <summary>
+        /// 仮親決め
+        /// </summary>
+        /// <returns></returns>
         public Player DecideParent()
         {
             //決定した親を格納.
-            Player decideParent;
+            Player parent = null;
 
             //サイ振り用ランダム.
             System.Random r = new System.Random();
@@ -36,35 +39,39 @@ namespace Mahjong
             //サイコロの値を足して,計算
             var saiValue = sai1 + sai2;
 
-           while(saiValue < 5)
+           while(saiValue > 5)
             {
                 saiValue = saiValue - 4;
             }
             switch (saiValue)
             {
                 case 1:
-                    decideParent = p1;
+                    parent = p1;
                     break;
                 case 2:
-                    decideParent = p2;
+                    parent = p2;
                     break;
                 case 3:
-                    decideParent = p3;
+                    parent = p3;
                     break;
                 case 4:
-                    decideParent = p4;
+                    parent = p4;
                     break;
             }
-            //未割当のローカル変数'decideParent'が使用されました？
-            return decideParent;
+            //親を返すよ
+            return parent;
         }
 
-        //途中！！！！
-        //仮親が決まっている場合
+        /// <summary>
+        /// 仮親が決まっている場合
+        /// 仮親の位置分プラスして回すよ
+        /// </summary>
+        /// <param name="p">p:受け取った仮親だよ！</param>
+        /// <returns>仮親から決定した親を返すよ！</returns>
         public Player DecideParent(Player p)
         {
-            //決定した親を格納.
-            Player decideParent;
+            //決定する親を格納.
+            Player parent = null;
 
             //サイ振り用ランダム.
             System.Random r = new System.Random();
@@ -76,27 +83,59 @@ namespace Mahjong
             //サイコロの値を足して,計算
             var saiValue = sai1 + sai2;
 
-            while (saiValue < 5)
+            //**怒られた・・・型がPlayerだから・・・かな？**
+            //switch (p.value)
+            //{
+            //    case p1:
+            //        saiValue = saiValue + 1;
+            //    break;
+            //    case p2:
+            //        saiValue = saiValue + 2;
+            //    break;
+            //}
+
+            //仮親の席分足す.
+            //         p3←3.
+            //  4→p4     p2←2.
+            //        p1←ここを1.
+            if (p == p1)
+            {
+                saiValue = saiValue + 1;
+            }
+            else if(p == p2)
+            {
+                saiValue = saiValue + 2;
+            }
+            else if (p == p3)
+            {
+                saiValue = saiValue + 3;
+            }
+            else if (p == p4)
+            {
+                saiValue = saiValue + 4;
+            }
+
+            while (saiValue > 5)
             {
                 saiValue = saiValue - 4;
             }
             switch (saiValue)
             {
                 case 1:
-                    decideParent = p1;
+                    parent = p1;
                     break;
                 case 2:
-                    decideParent = p2;
+                    parent = p2;
                     break;
                 case 3:
-                    decideParent = p3;
+                    parent = p3;
                     break;
                 case 4:
-                    decideParent = p4;
+                    parent = p4;
                     break;
             }
-            //未割当のローカル変数'decideParent'が使用されました？
-            return decideParent;
+            //親を返すよ
+            return parent;
         }
-}
+    }
 }
